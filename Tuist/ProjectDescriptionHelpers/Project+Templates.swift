@@ -28,7 +28,7 @@ extension Project {
                 infoPlist: .default,
                 sources: ["Targets/\(name)/Sources/**"],
                 resources: [],
-                dependencies: [.external(name: "StreamChat")])
+                dependencies: [])
         let tests = Target(name: "\(name)Tests",
                 platform: platform,
                 product: .unitTests,
@@ -58,7 +58,7 @@ extension Project {
             infoPlist: .extendingDefault(with: infoPlist),
             sources: ["Targets/\(name)/Sources/**"],
             resources: ["Targets/\(name)/Resources/**"],
-            dependencies: dependencies
+            dependencies: dependencies + [.external(name: "StreamChat")]
         )
 
         let testTarget = Target(
